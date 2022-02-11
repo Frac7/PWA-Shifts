@@ -8,26 +8,10 @@ const trash = [
 ];
 
 const street = [
-  {
-    street: 'Via Trentino',
-    day: 1,
-    week: 3,
-  },
-  {
-    street: 'Via Basilicata',
-    day: 0,
-    week: 0,
-  },
-  {
-    street: 'Via Istria',
-    day: 3,
-    week: 1,
-  },
-  {
-    street: 'Via Lombardia',
-    day: 4,
-    week: 1,
-  },
+  'Via Trentino',
+  'Via Basilicata',
+  'Via Istria',
+  'Via Lombardia',
 ];
 
 export { street, trash };
