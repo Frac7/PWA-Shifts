@@ -1,5 +1,6 @@
 {
   "name": "shifts",
+  "homepage": "https://Frac7.github.io/PWAShifts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
