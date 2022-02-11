@@ -9,7 +9,7 @@ const Trash = ({ date }) => {
   return (
     <details>
       <summary>Turni della spazzatura:</summary>
-      {trashItems ? trashItems.map((trashItem) => <kdb>{trashItem}</kdb>) : '-'}
+      {trashItems ? trashItems.map((trashItem) => <kbd>{trashItem}</kbd>) : '-'}
     </details>
   );
 };
