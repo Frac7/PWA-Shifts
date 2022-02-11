@@ -1,11 +1,3 @@
-const clean = [
-  'Alessandro',
-  'Francesca S.',
-  'Giuseppe',
-  'Francesca C.',
-  'Chiara',
-];
-
 const trash = [
   ['Umido'],
   ['Secco'],
@@ -38,4 +30,4 @@ const street = [
   },
 ];
 
-export { clean, street, trash };
+export { street, trash };
