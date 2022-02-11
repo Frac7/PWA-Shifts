@@ -4,6 +4,7 @@ const Trash = ({ date }) => {
   return (
     <details>
       <summary>Turni della spazzatura:</summary>
+      <kbd>Person</kbd>
     </details>
   );
 };

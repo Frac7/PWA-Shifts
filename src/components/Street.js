@@ -4,6 +4,7 @@ const Street = ({ date }) => {
   return (
     <details>
       <summary>Turni della lavastrada:</summary>
+      <kbd>Person</kbd>
     </details>
   );
 };
