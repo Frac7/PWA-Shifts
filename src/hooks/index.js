@@ -23,7 +23,7 @@ const useNotifications = () => {
                   fetch(`${process.env.REACT_APP_BE_URL}/public-key`)
                     .then((res) => res.json())
                     .then((res) => {
-                      const publicKey = urlBase64ToUint8Array(res);
+                      const publicKey = urlBase64ToUint8Array(res.publicKey);
                       return registration.pushManager.subscribe({
                         userVisibleOnly: true,
                         applicationServerKey: publicKey,
@@ -32,7 +32,7 @@ const useNotifications = () => {
                 })
                 // 3 - Send subscription
                 .then((subscription) => {
-                  fetch(`${process.env.REACT_APP_BE_URL}/register`, {
+                  fetch(`${process.env.REACT_APP_BE_URL}/subscription`, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
