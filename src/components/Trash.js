@@ -1,17 +1,16 @@
 import React from 'react';
 
-import { trash } from '../data';
-
-const Trash = ({ date }) => {
-  const dayOfTheWeek = new Date(date).getDay();
-  const trashItems = trash[dayOfTheWeek];
-
-  return (
-    <details>
-      <summary>Turni della spazzatura:</summary>
-      {trashItems ? trashItems.map((trashItem) => <kbd>{trashItem}</kbd>) : '-'}
-    </details>
-  );
-};
+const Trash = ({ data }) => (
+  <details open={!!data}>
+    <summary>Turni della spazzatura:</summary>
+    {data
+      ? data.map((trashItem) => (
+          <>
+            <kbd>{trashItem}</kbd>&nbsp;
+          </>
+        ))
+      : '-'}
+  </details>
+);
 
 export default Trash;
