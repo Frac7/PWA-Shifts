@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
 import { Trash, Street } from './components';
+import { useNotifications } from './hooks';
 
 const App = () => {
+  useNotifications();
+
   const [date, setDate] = useState('');
   const onChangeDate = (event) => {
     setDate(event.target.value);
