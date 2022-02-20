@@ -24,7 +24,7 @@ const useNotifications = () => {
                 return subscription;
               }
               // 2b - Otherwise register a subscription to the server using a valid public key provided from the server
-              fetch(`${process.env.REACT_APP_BE_URL}public-key`)
+              return fetch(`${process.env.REACT_APP_BE_URL}public-key`)
                 .then((res) => res.json())
                 .then((res) => {
                   const publicKey = urlBase64ToUint8Array(res.publicKey);
