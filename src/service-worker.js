@@ -74,9 +74,12 @@ self.addEventListener('message', (event) => {
 // 4 - Add event listener for listening push notifications from server
 self.addEventListener('push', function (event) {
   const payload = event.data && JSON.parse(event.data.text());
+  const body = `Turni della spazzatura: ${payload.trash.join(
+    ',',
+  )}\nTurni della lavastrada: ${payload.street}`;
   event.waitUntil(
     self.registration.showNotification('Turni', {
-      body: payload,
+      body,
     }),
   );
 });
