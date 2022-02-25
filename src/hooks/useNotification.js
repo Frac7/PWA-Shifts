@@ -8,21 +8,23 @@ const handleSubscription = (registration) => {
     registration.pushManager
       .getSubscription()
       .then((subscription) => {
-        // 2a - Return the subscription, if it exists
-        if (subscription) {
-          return subscription;
-        }
-        // 2b - Otherwise register a subscription to the server using a valid public key provided from the server
-        return getPublicKey().then((res) => {
-          const publicKey = urlBase64ToUint8Array(res.publicKey);
-          return registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: publicKey,
+        if (!subscription) {
+          // 2b. Register a subscription to the server using a valid public key provided from the server
+          return getPublicKey().then((res) => {
+            const publicKey = urlBase64ToUint8Array(res.publicKey);
+            return registration.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: publicKey,
+            });
           });
-        });
+        }
       })
       // 3 - Send subscription
-      .then(sendSubscription)
+      .then((subscription) => {
+        if (subscription) {
+          sendSubscription(subscription);
+        }
+      })
   );
 };
 
@@ -32,7 +34,7 @@ const useNotifications = () => {
       // 1. Request permission for notification for the first time
       Notification.requestPermission().then((permission) => {
         if (permission === 'granted') {
-          // 2. When the service worker is ready and notifications are allowed, handle subscription
+          // 2a. When the service worker is ready and notifications are allowed, handle subscription
           navigator.serviceWorker.ready.then(handleSubscription);
         }
       });
@@ -41,7 +43,7 @@ const useNotifications = () => {
 
   useEffect(() => {
     if (Notification.permission === 'granted') {
-      // 2. When the service worker is ready and notifications are allowed, handle subscription
+      // 2a. When the service worker is ready and notifications are allowed, handle subscription
       navigator.serviceWorker.ready.then(handleSubscription);
     }
   }, []);
