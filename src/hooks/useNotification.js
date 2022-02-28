@@ -8,23 +8,21 @@ const handleSubscription = (registration) => {
     registration.pushManager
       .getSubscription()
       .then((subscription) => {
-        if (!subscription) {
-          // 2b. Register a subscription to the server using a valid public key provided from the server
-          return getPublicKey().then((res) => {
-            const publicKey = urlBase64ToUint8Array(res.publicKey);
-            return registration.pushManager.subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: publicKey,
-            });
-          });
+        if (subscription) {
+          return subscription;
         }
+
+        // 2b. Register a subscription to the server using a valid public key provided from the server
+        return getPublicKey().then((res) => {
+          const publicKey = urlBase64ToUint8Array(res.publicKey);
+          return registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: publicKey,
+          });
+        });
       })
       // 3 - Send subscription
-      .then((subscription) => {
-        if (subscription) {
-          sendSubscription(subscription);
-        }
-      })
+      .then(sendSubscription)
   );
 };
 
