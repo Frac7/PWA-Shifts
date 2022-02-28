@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals */
+import { pushNotificationListener } from './listeners';
 
 // This service worker can be customized!
 // See https://developers.google.com/web/tools/workbox/modules
@@ -72,14 +73,4 @@ self.addEventListener('message', (event) => {
 
 // Any other custom service worker logic can go here.
 // 4 - Add event listener for listening push notifications from server
-self.addEventListener('push', function (event) {
-  const payload = event.data && JSON.parse(event.data.text());
-  const body = `Turni della spazzatura: ${payload.trash.join(
-    ',',
-  )}\nTurni della lavastrada: ${payload.street}`;
-  event.waitUntil(
-    self.registration.showNotification('Turni', {
-      body,
-    }),
-  );
-});
+self.addEventListener('push', pushNotificationListener.bind(self));
