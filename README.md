@@ -4,7 +4,7 @@ This example is based on [this resource](https://developer.mozilla.org/en-US/doc
 
 # Overview
 This project was created with:
-- Create React App using the PWA template that add the `service-worker.js` and `serviceWorkerRegistration.js` files;
+- Create React App using the PWA template that adds the `service-worker.js` and `serviceWorkerRegistration.js` files;
 - [Pico.css](https://picocss.com/docs/classless.html) for styling using the classless version.
 
 ## Registration flow
@@ -18,7 +18,7 @@ This flow is managed by a special hook: `useNotification`.
 There is a special listener in the `service-worker.js` file for the `push` event which handles push notifications from the server.
 
 ## Get the turns
-Changing the date in the application updates the status of the main component: To react to this change, the client retrieves the information about the shifts for the selected date and updates the user interface using new data.
+Changing the date in the application updates the status of the main component: to react to this change, the client retrieves the information about the shifts for the selected date and updates the user interface using new data.
 
 # Getting started
 Run the following command: `yarn install && yarn start`
