@@ -21,4 +21,6 @@ There is a special listener in the `service-worker.js` file for the `push` event
 Changing the date in the application updates the status of the main component: to react to this change, the client retrieves the information about the shifts for the selected date and updates the user interface using new data.
 
 # Getting started
+Create the `.env` file to store the backend url: the variable is `REACT_APP_BE_URL`. The backend has been placed in the [this repository](https://github.com/Frac7/ExpressPWAShifts). When run locally, the variable is equal to `http://localhost:4000`.
+
 Run the following command: `yarn install && yarn start`
