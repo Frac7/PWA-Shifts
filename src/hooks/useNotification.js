@@ -16,7 +16,7 @@ const handleSubscription = (registration) => {
         return getPublicKey().then((res) => {
           const publicKey = urlBase64ToUint8Array(res.publicKey);
           return registration.pushManager.subscribe({
-            userVisibleOnly: true,
+            userVisibleOnly: true, // See: https://developers.google.com/web/fundamentals/push-notifications/subscribing-a-user#uservisibleonly_options
             applicationServerKey: publicKey,
           });
         });
