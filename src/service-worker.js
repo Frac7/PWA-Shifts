@@ -1,5 +1,9 @@
 /* eslint-disable no-restricted-globals */
-import { pushNotificationListener } from './listeners';
+import {
+  notificationClickListener,
+  pushNotificationListener,
+  pushSubscriptionChangeListener,
+} from './listeners';
 
 // This service worker can be customized!
 // See https://developers.google.com/web/tools/workbox/modules
@@ -74,3 +78,11 @@ self.addEventListener('message', (event) => {
 // Any other custom service worker logic can go here.
 // 4 - Add event listener for listening push notifications from server
 self.addEventListener('push', pushNotificationListener.bind(self));
+self.addEventListener(
+  'notificationclick',
+  notificationClickListener.bind(self),
+);
+self.addEventListener(
+  'pushsubscriptionchange',
+  pushSubscriptionChangeListener.bind(self),
+);
